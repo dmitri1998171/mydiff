@@ -1,8 +1,8 @@
-BIN := main
+BIN := mydiff
 
 SRC := main.c
 CC := gcc
-CFLAGS := -Wall -g
+CFLAGS := -Wall
 LDFLAGS := -lpanel -lncurses
 
 .PHONY: all clean

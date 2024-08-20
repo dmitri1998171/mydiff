@@ -27,7 +27,10 @@ void printFile(const char* path, WINDOW* win) {
     fclose(fptr); 
 }
 
-int main() {
+int main(int argc, char** argv) {
+    if(argc != 3)
+        printf("Incorrect arguments.\n Use mydiff <file_1> <file_2>\n");
+
     WINDOW *my_wins[2];
 	PANEL  *my_panels[2];
 
@@ -36,12 +39,11 @@ int main() {
     my_wins[0] = newwin(LINES, COLS / 2, 0, 0);
 	my_wins[1] = newwin(LINES, COLS / 2, 0, COLS / 2); 
 
-
     my_panels[0] = new_panel(my_wins[0]);
 	my_panels[1] = new_panel(my_wins[1]);
 
-    printFile("test.txt", my_wins[0]);
-    printFile("test.txt", my_wins[1]);
+    printFile(argv[1], my_wins[0]);
+    printFile(argv[2], my_wins[1]);
 
     box(my_wins[0], 0, 0);
     box(my_wins[1], 0, 0);
@@ -61,6 +63,6 @@ int main() {
 
 \/ 0) draw windows
 \/ 1) print a files into windows
-2) parse args
+\/ 2) parse args
 
 */ 
